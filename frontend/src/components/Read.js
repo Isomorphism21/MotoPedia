@@ -10,12 +10,13 @@ export default function Read(APIURL){
         axios.get(`${APIURL.APIURL}/get`)
           .then((response) => {
             console.log(response.data);
-            setAPIData(response.data)
+            setAPIData(response.data);
           });
+        
       }, [APIURL]);
 
     const setData = (data) => {
-        const {_id, modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, imagen} = data;
+        const {_id, modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, imagen, marca} = data;
         localStorage.setItem("ID", _id);
         localStorage.setItem("Modelo", modelo);
         localStorage.setItem("Tipo", tipo);
@@ -24,12 +25,15 @@ export default function Read(APIURL){
         localStorage.setItem("Cilindraje", cilindraje);
         localStorage.setItem("Descripcion", descripcion);
         localStorage.setItem("Imagen", imagen);
+        localStorage.setItem("Marca", marca);
     }
 
     const getData = async ()=>{
         try {
             const data = await axios.get(`${APIURL.APIURL}/get`);
             setAPIData(data.data);
+            
+            
         } catch (error) {
             console.log(error);
         }
@@ -71,16 +75,14 @@ export default function Read(APIURL){
                                 <Table.Cell>{data.abs}</Table.Cell>
                                 <Table.Cell>{data.cilindraje}</Table.Cell>
                                 <Table.Cell>{data.descripcion}</Table.Cell>
-                                <Link to="/update">
+                                <Link to={`/update/${data.marca}`}>
                                     <Table.Cell>
                                         <Button onClick={() => {setData(data)}}>Actualizar</Button>
                                     </Table.Cell>
                                 </Link>
-                                
                                     <Table.Cell>
                                         <Button onClick={() => {onDelete(data._id)}}>Eliminar</Button>
                                     </Table.Cell>
-                                
                             </Table.Row>
                         )
                     })

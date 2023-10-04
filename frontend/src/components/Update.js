@@ -28,6 +28,7 @@ export default function Update(){
     const [abs, setAbs] = useState('');
     const [cilindraje, setCilindraje] = useState('');
     const [descripcion, setDescripcion] = useState('');
+    const [marca, setMarca] = useState('');
 
     useEffect(() => {
         setID(localStorage.getItem('ID'));
@@ -37,14 +38,15 @@ export default function Update(){
         setAbs(localStorage.getItem('Abs'));
         setCilindraje(localStorage.getItem('Cilindraje'));
         setDescripcion(localStorage.getItem('Descripcion'));
+        setMarca(localStorage.getItem('Marca'))
     }, []);
 
     const updateApiData = async () => {
         try {
             await axios.put(`${APIURL}/put/${id}`, {
-                modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion
+                modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, marca
             });
-            history.push('/');
+            history.push(`/motos-${marca}`);
         } catch (error) {
             console.log(error);
         }

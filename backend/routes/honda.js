@@ -15,7 +15,32 @@ router.get("/get", async (req, res) => {
         await client.connect();
         const db = client.db(nombreBase);
         const collection = db.collection(honda);
-        const result = await collection.find().toArray();
+        const result = await collection.aggregate([{
+            $lookup: {
+                from: "tiposdemotos",
+                localField: "tipo",
+                foreignField: "_id",
+                as: "tiposdemotos"
+            },
+        },
+        {
+            $unwind: "$tiposdemotos"
+        },
+        {
+            $project: {
+                _id: 1,
+                modelo: 1,
+                tipo: 1,
+                cuerpodeaceleracion: 1,
+                abs: 1,
+                cilindraje: 1,
+                descripcion: 1,
+                imagen: 1,
+                marca: 1,
+                "tiposdemotos.tipomoto": 1
+            }
+        }
+        ]).toArray();
         res.json(result);
         await client.close();
     } catch (error) {
@@ -68,5 +93,7 @@ router.put("/put/:id", async (req, res) => {
         console.log(error);
     }
 });
+
+
 
 export default router;
