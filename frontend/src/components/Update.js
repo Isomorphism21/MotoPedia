@@ -8,7 +8,6 @@ export default function Update(){
     const { url } = useParams();
     let APIURL;
   
-    
     if (url === 'yamaha') {
       APIURL = 'http://localhost:5200/yamaha';
     } else if (url === 'honda') {
@@ -29,6 +28,8 @@ export default function Update(){
     const [cilindraje, setCilindraje] = useState('');
     const [descripcion, setDescripcion] = useState('');
     const [marca, setMarca] = useState('');
+    const [data, setData] = useState('');
+    const [imagen, setImagen] = useState('');
 
     useEffect(() => {
         setID(localStorage.getItem('ID'));
@@ -38,14 +39,21 @@ export default function Update(){
         setAbs(localStorage.getItem('Abs'));
         setCilindraje(localStorage.getItem('Cilindraje'));
         setDescripcion(localStorage.getItem('Descripcion'));
-        setMarca(localStorage.getItem('Marca'))
+        setMarca(localStorage.getItem('Marca'));
+        setImagen(localStorage.getItem('Imagen'));
+        axios.get("http://localhost:5200/tipomoto/get")
+        .then((response) => {
+            console.log(response.data);
+            setData(response.data);
+        })
     }, []);
 
     const updateApiData = async () => {
         try {
             await axios.put(`${APIURL}/put/${id}`, {
-                modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, marca
+                modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, marca, imagen
             });
+            console.log(tipo);
             history.push(`/motos-${marca}`);
         } catch (error) {
             console.log(error);
@@ -61,7 +69,14 @@ export default function Update(){
                 </Form.Field>
                 <Form.Field>
                     <label>Tipo</label>
-                    <input placeholder="Tipo" value={tipo} onChange={(e) => setTipo(e.target.value)}></input>
+                    {/* <input placeholder="Tipo" value={tipo} onChange={(e) => setTipo(e.target.value)}></input> */}
+                    <select onChange={(e) => setTipo(e.target.value)}>
+                        <option value=''>Seleccionar</option>
+                        {Array.isArray(data) && data.map((element) => (
+                            <option key={element._id} value={element._id}>{element.tipomoto}</option>
+                            
+                        ))}
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Cuerpo De Aceleraciónn</label>

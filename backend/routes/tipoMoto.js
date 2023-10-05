@@ -9,14 +9,13 @@ const uri = process.env.MONGO_URI;
 const nombreBase = "bikedata";
 const tipoMoto = "tiposdemotos";
 
-router.get("/get/:id", async (req, res) => {
+router.get("/get", async (req, res) => {
     try {
-        const id = req.params.id;
         const client = new MongoClient(uri);
         await client.connect();
         const db = client.db(nombreBase);
         const collection = db.collection(tipoMoto);
-        const result = await collection.find({_id: new ObjectId(id)}).toArray();
+        const result = await collection.find().toArray();
         res.json(result);
         await client.close();
     } catch (error) {

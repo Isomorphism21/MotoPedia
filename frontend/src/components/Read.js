@@ -16,7 +16,7 @@ export default function Read(APIURL){
       }, [APIURL]);
 
     const setData = (data) => {
-        const {_id, modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, imagen, marca} = data;
+        const {_id, modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, imagen, marca, tiposdemotos} = data;
         localStorage.setItem("ID", _id);
         localStorage.setItem("Modelo", modelo);
         localStorage.setItem("Tipo", tipo);
@@ -26,6 +26,7 @@ export default function Read(APIURL){
         localStorage.setItem("Descripcion", descripcion);
         localStorage.setItem("Imagen", imagen);
         localStorage.setItem("Marca", marca);
+        localStorage.setItem("TipoReal", tiposdemotos.tipomoto)
     }
 
     const getData = async ()=>{
@@ -59,8 +60,9 @@ export default function Read(APIURL){
                         <Table.HeaderCell>ABS</Table.HeaderCell>
                         <Table.HeaderCell>Cilindraje</Table.HeaderCell>
                         <Table.HeaderCell>Descripcion</Table.HeaderCell>
-                        <Table.HeaderCell>Eliminar</Table.HeaderCell>
                         <Table.HeaderCell>Actualizar</Table.HeaderCell>
+                        <Table.HeaderCell>Eliminar</Table.HeaderCell>
+                        <Table.HeaderCell>Crear</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
              <TableBody>
@@ -70,7 +72,7 @@ export default function Read(APIURL){
                         return(
                             <Table.Row>
                                 <Table.Cell>{data.modelo}</Table.Cell>
-                                <Table.Cell>{data.tipo}</Table.Cell>
+                                <Table.Cell>{data.tiposdemotos.tipomoto}</Table.Cell>
                                 <Table.Cell>{data.cuerpodeaceleracion}</Table.Cell>
                                 <Table.Cell>{data.abs}</Table.Cell>
                                 <Table.Cell>{data.cilindraje}</Table.Cell>
@@ -83,6 +85,11 @@ export default function Read(APIURL){
                                     <Table.Cell>
                                         <Button onClick={() => {onDelete(data._id)}}>Eliminar</Button>
                                     </Table.Cell>
+                                <Link to={`/create/${data.marca}`}>
+                                    <Table.Cell>
+                                        <Button>Create</Button>
+                                    </Table.Cell>
+                                </Link>
                             </Table.Row>
                         )
                     })

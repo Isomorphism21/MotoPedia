@@ -2,6 +2,7 @@ import './App.css';
 import Read from './components/Read';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Update from './components/Update';
+import Create from './components/Create';
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
       </Route>
       <Route path='/update/:url'>
         <Update />
+      </Route>
+      <Route path='/create/:url'>
+        <Create />
       </Route>
     </Router>
   );
