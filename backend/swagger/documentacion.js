@@ -681,7 +681,10 @@ const swaggerDocumentacion = {
       }
     },
     apis: [
-        "./routes/honda.js"
+        "./routes/honda.js",
+        "./routes/yamaha.js",
+        "./routes/kawasaki.js",
+        "./routes/suzuki.js"
     ],
   };
   
