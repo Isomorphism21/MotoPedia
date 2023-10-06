@@ -109,7 +109,7 @@ router.put("/put/:id", async (req, res) => {
         const db = client.db(nombreBase);
         const collection = db.collection(honda);
         const result = await collection.replaceOne({_id: new ObjectId(id)}, datosIngresar);
-        res.json(result); 
+        res.json(result);
         await client.close();
     } catch (error) {
         console.log(error);

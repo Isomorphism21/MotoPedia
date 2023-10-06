@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import BasicExample from './components/HomePage/Header';
 import FooterHome from './components/HomePage/Footer';
 
+
 function App() {
   return (
     <Router>
@@ -53,7 +54,9 @@ function App() {
         </div>
       </Route>
       <Route path='/update/:url'>
+        <BasicExample/>
         <Update />
+        <FooterHome/>
       </Route>
       <Route path='/create/:url'>
         <Create />

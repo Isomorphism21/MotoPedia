@@ -46,7 +46,19 @@
   }
 }
 
+/* UPDATE */
 
+.formularioEdit{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.editForm{
+  width: 50%;
+}
 
 /* Main */
 
