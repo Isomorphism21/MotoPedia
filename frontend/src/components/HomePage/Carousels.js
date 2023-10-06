@@ -1,25 +1,46 @@
 import Carousel from 'react-bootstrap/Carousel';
+import fotoSuzuki from "./assets/suzukiCortada.jpg";
+import fotoYamaha from "./assets/yamahaCortada.jpg";
+import fotoKawasaki from "./assets/kawa.jpg";
+import fotoHonda from "./assets/HondaCortada.jpg";
+import { Link, useHistory } from 'react-router-dom';
 
 function CarouselsMain() {
+  const history = useHistory();
+
   return (
-    <Carousel>
+    <Carousel interval={3000} fade>
       <Carousel.Item>
-        <img src="./assets/suzukiCortada.jpg" style={{maxWidth:"100%", height:"auto"}} text="First slide"/>
+        <Link onClick={() => {
+          history.push('/motos-yamaha');
+          window.location.reload();
+        }}>
+          <img src={fotoYamaha} style={{ maxWidth: "100%", height: "auto" }} text="primer slide" />
+        </Link>
         <Carousel.Caption>
           <h3>Yamaha</h3>
           <p>Confiabilidad y Diseño.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img src='https://www.incolmotos-yamaha.com.co/wp-content/uploads/2023/08/xtz250bannerHome.jpg' style={{maxWidth:"100%", height:"auto"}} text="First slide"/>
+        <Link onClick={() => {
+          history.push('/motos-kawasaki');
+          window.location.reload();
+        }}>
+          <img src={fotoKawasaki} style={{ maxWidth: "100%", height: "auto" }} text="segundo slide" />
+        </Link>
         <Carousel.Caption>
           <h3>Kawasaki</h3>
           <p>Torque y Agresividad.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img src='https://comotos.co/wp-content/uploads/2019/08/Product_Detail_Page_Banner_1920-965_5d4a6bfaeafbf-min.jpg' style={{maxWidth:"100%", height:"auto"}} text="First slide"/>
-
+        <Link onClick={() => {
+          history.push('/motos-suzuki');
+          window.location.reload();
+        }}>
+          <img src={fotoSuzuki} style={{ maxWidth: "100%", height: "auto" }} text="tercero slide" />
+        </Link>
         <Carousel.Caption>
           <h3>Suzuki</h3>
           <p>
@@ -28,8 +49,12 @@ function CarouselsMain() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-      <img src='https://media.autecomobility.com/recursos/imagenes/hotsite/kawasaki/2023/BANNER-VERSYS-WEB.webp' style={{maxWidth:"100%", height:"auto"}} text="First slide"/>
-
+        <Link onClick={() => {
+          history.push('/motos-honda');
+          window.location.reload();
+        }}>
+          <img src={fotoHonda} style={{ maxWidth: "100%", height: "auto" }} text="cuarto slide" />
+        </Link>
         <Carousel.Caption>
           <h3>Honda</h3>
           <p>

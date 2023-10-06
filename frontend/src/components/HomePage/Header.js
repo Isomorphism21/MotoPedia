@@ -2,26 +2,44 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useHistory } from 'react-router-dom';
 
 function BasicExample() {
+  const history = useHistory();
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
-      <Container style={{margin:"0px"}}>
+    <Navbar expand="lg" data-bs-theme="dark" className="bg-body-tertiary">
+      <Container style={{ margin: "0px" }}>
         <Navbar.Brand href="#home">MotoPedia</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto" style={{gap:"30px"}}>
+          <Nav className="me-auto" style={{ gap: "30px" }}>
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
             <Nav.Link href="#link">Consesionarios</Nav.Link>
             <Nav.Link href="#link">Informes</Nav.Link>
             <NavDropdown title="Marcas" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Yamaha</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item onClick={() => {
+                history.push('/motos-yamaha');
+                window.location.reload();
+              }}>
+                Yamaha
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => {
+                history.push('/motos-honda');
+                window.location.reload();
+              }}>
                 Honda
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Suzuki</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item onClick={() => {
+                history.push('/motos-suzuki');
+                window.location.reload();
+              }}>
+                Suzuki
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => {
+                history.push('/motos-kawasaki');
+                window.location.reload();
+              }}>
                 Kawasaki
               </NavDropdown.Item>
             </NavDropdown>

@@ -12,7 +12,6 @@ function App() {
       <Route exact path='/'>
         <div className='main'>
                 <Homepage/>  
-                <div>sadasdsa</div>
         </div>
       </Route>
       <Route exact path='/motos-yamaha'>
