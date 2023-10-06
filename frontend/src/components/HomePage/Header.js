@@ -9,11 +9,17 @@ function BasicExample() {
   return (
     <Navbar expand="lg" data-bs-theme="dark" className="bg-body-tertiary">
       <Container style={{ margin: "0px" }}>
-        <Navbar.Brand href="#home">MotoPedia</Navbar.Brand>
+        <Navbar.Brand onClick={() => {
+                history.push('/');
+                window.location.reload();
+              }}>MotoPedia</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto" style={{ gap: "30px" }}>
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link onClick={() => {
+                history.push('/');
+                window.location.reload();
+              }}>Home</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
             <Nav.Link href="#link">Consesionarios</Nav.Link>
             <Nav.Link href="#link">Informes</Nav.Link>

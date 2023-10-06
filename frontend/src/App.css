@@ -47,6 +47,7 @@
 }
 
 
+
 /* Main */
 
 .contenedorInfo{
@@ -76,6 +77,15 @@
   height: 290px;
   width: 64%;
   margin-left: 20px;
+}
+
+.card-horizontal-nuevo {
+  display: flex;
+  flex-direction: column;
+  height: 290px;
+  width: 64%;
+  margin-left: 20px;
+  margin-bottom: 200px;
 }
 
 .cambiartamaño{

@@ -1,49 +1,55 @@
 import './App.css';
 import Read from './components/Read';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Update from './components/Update';
 import Create from './components/Create';
 import Homepage from './components/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BasicExample from './components/HomePage/Header';
+import FooterHome from './components/HomePage/Footer';
 
 function App() {
   return (
     <Router>
       <Route exact path='/'>
         <div className='main'>
-                <Homepage/>  
+          <Homepage />
         </div>
       </Route>
       <Route exact path='/motos-yamaha'>
         <div className='main'>
-          <h2 className='main-header'>Informacion Motos Yamaha</h2>
-          <div style={{marginTop:20}}>
-                <Read APIURL="http://localhost:5200/yamaha"/>
-          </div>  
+          <BasicExample />
+          <div >
+            <Read APIURL="http://localhost:5200/yamaha" />
+          </div>
+          <FooterHome/>
         </div>
       </Route>
       <Route exact path='/motos-honda'>
         <div className='main'>
-          <h2 className='main-header'>Informacion Motos Honda</h2>
-          <div style={{marginTop:20}}>
-                <Read APIURL="http://localhost:5200/honda"/>
-          </div>  
+          <BasicExample />
+          <div >
+            <Read APIURL="http://localhost:5200/honda" />
+          </div>
+          <FooterHome/>
         </div>
       </Route>
       <Route exact path='/motos-kawasaki'>
         <div className='main'>
-          <h2 className='main-header'>Informacion Motos Kawasaki</h2>
-          <div style={{marginTop:20}}>
-                <Read APIURL="http://localhost:5200/kawasaki"/>
-          </div>  
+          <BasicExample />
+          <div >
+            <Read APIURL="http://localhost:5200/kawasaki" />
+          </div>
+          <FooterHome/>
         </div>
       </Route>
       <Route exact path='/motos-suzuki'>
         <div className='main'>
-          <h2 className='main-header'>Informacion Motos Suzuki</h2>
-          <div style={{marginTop:20}}>
-                <Read APIURL="http://localhost:5200/suzuki"/>
-          </div>  
+          <BasicExample />
+          <div >
+            <Read APIURL="http://localhost:5200/suzuki" />
+          </div>
+          <FooterHome/>
         </div>
       </Route>
       <Route path='/update/:url'>
