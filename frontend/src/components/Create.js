@@ -61,6 +61,7 @@ export default function Create(){
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Tipo De Motocicleta</Form.Label>
             <Form.Select onChange={(e) => setTipo(e.target.value)} aria-label="Default select example">
+            <option value="651c13badbe082819d02dd03">Selecciona otro...</option>
                 {Array.isArray(data) && data.map((element) => (
                     <option key={element._id} value={element._id}>{element.tipomoto}</option>          
                 ))}
