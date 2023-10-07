@@ -108,8 +108,9 @@ router.put("/put/:id", async (req, res) => {
         await client.connect();
         const db = client.db(nombreBase);
         const collection = db.collection(yamaha);
-        const result = await collection.replaceOne({_id: new ObjectId(id)}, datosIngresar);
-        res.json(result);
+        /* const result = await collection.replaceOne({_id: new ObjectId(id)}, datosIngresar);
+        res.json(result); */
+        console.log(datosIngresar);
         await client.close();
     } catch (error) {
         console.log(error);

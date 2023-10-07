@@ -102,7 +102,7 @@ export default function Update() {
             <Form.Label>Descripción</Form.Label>
             <Form.Control type="text" placeholder="Descripcion" value={descripcion} onChange={(e) => setDescripcion(e.target.value)}/>
         </Form.Group>
-        <Button variant="primary" onClick={updateApiData}>
+        <Button variant="primary" onClick={() => {updateApiData()}}>
           Actualizar
         </Button>
       </Form>

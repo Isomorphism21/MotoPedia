@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useHistory } from "react-router";
-import {Button, Form} from "semantic-ui-react";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import { useParams } from "react-router-dom";
 
 export default function Create(){
@@ -34,6 +35,7 @@ export default function Create(){
             modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, imagen, marca
         }).then(()=>{
             history.push(`/motos-${marca}`);
+            window.location.reload();
         })
     }
 
@@ -46,43 +48,48 @@ export default function Create(){
     }, []);
 
     return(
-        <div>
-            <Form className='create-form'>
-                <Form.Field>
-                    <label>Modelo</label>
-                    <input placeholder='Modelo' value={modelo} onChange={(e) => setModelo(e.target.value)}></input>
-                </Form.Field>
-                <Form.Field>
-                <label>Tipo</label>
-                    <select onChange={(e) => setTipo(e.target.value)}>
-                        <option value=''>Seleccionar</option>
-                        {Array.isArray(data) && data.map((element) => (
-                            <option key={element._id} value={element._id}>{element.tipomoto}</option>
-                        ))}
-                    </select>
-                </Form.Field>
-                <Form.Field>
-                    <label>Cuerpo De Aceleración</label>
-                    <input placeholder='CuerpoDeAceleración' value={cuerpodeaceleracion} onChange={(e) => setCuerpoDeAceleracion(e.target.value)}></input>
-                </Form.Field>
-                <Form.Field>
-                    <label>Abs</label>
-                    <input placeholder='Abs' value={abs} onChange={(e) => setAbs(e.target.value)}></input>
-                </Form.Field>
-                <Form.Field>
-                    <label>Cilindraje</label>
-                    <input placeholder='Cilindraje' value={cilindraje} onChange={(e) => setCilindraje(e.target.value)}></input>
-                </Form.Field>
-                <Form.Field>
-                    <label>Descripcion</label>
-                    <input placeholder='Descripcion' value={descripcion} onChange={(e) => setDescripcion(e.target.value)}></input>
-                </Form.Field>
-                <Form.Field>
-                    <label>Imagen</label>
-                    <input placeholder='Imagen' value={imagen} onChange={(e) => setImagen(e.target.value)}></input>
-                </Form.Field>
-                <Button type='submit' onClick={postData} >Crear</Button>
-            </Form>
-        </div>
+        <div className="formularioEdit">
+            <div style={{display:"flex", justifyContent:"center"}}>
+                <h1>CREAR</h1>
+            </div>
+      <Form className="editForm">
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Modelo</Form.Label>
+          <Form.Control type="text" placeholder="Modelo" onChange={(e) => setModelo(e.target.value)}/>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Tipo De Motocicleta</Form.Label>
+            <Form.Select onChange={(e) => setTipo(e.target.value)} aria-label="Default select example">
+                {Array.isArray(data) && data.map((element) => (
+                    <option key={element._id} value={element._id}>{element.tipomoto}</option>          
+                ))}
+            </Form.Select>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Label>Cuerpo De Aceleración</Form.Label>
+            <Form.Control type="text" placeholder="Cuerpo De Aceleración" onChange={(e) => setCuerpoDeAceleracion(e.target.value)}/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Label>ABS</Form.Label>
+            <Form.Control type="text" placeholder="ABS" onChange={(e) => setAbs(e.target.value)}/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Label>Cilindraje</Form.Label>
+            <Form.Control type="text" placeholder="Cilindraje" onChange={(e) => setCilindraje(e.target.value)}/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Label>Descripción</Form.Label>
+            <Form.Control type="text" placeholder="Descripcion" onChange={(e) => setDescripcion(e.target.value)}/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Label>Imagen</Form.Label>
+            <Form.Control type="text" placeholder="Descripcion" onChange={(e) => setImagen(e.target.value)}/>
+        </Form.Group>
+        <Button variant="primary" onClick={() => {postData()}}>
+          Crear
+        </Button>
+      </Form>
+    </div>
     )
 }

@@ -59,7 +59,9 @@ function App() {
         <FooterHome/>
       </Route>
       <Route path='/create/:url'>
+      <BasicExample/>
         <Create />
+        <FooterHome/>
       </Route>
     </Router>
   );

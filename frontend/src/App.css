@@ -2,6 +2,13 @@
   text-align: center;
 }
 
+.spinner-border{
+  --bs-spinner-width: 12rem !important;
+  --bs-spinner-height: 12rem !important;
+  --bs-spinner-animation-speed: 1s !important;
+  --bs-spinner-border-width: 2rem !important;
+}
+
 #root{
   background-color: #0E0D0D !important;
   color: white;
@@ -153,6 +160,7 @@
   justify-items: center;
   align-items: center; 
   height: 100vh; 
+  margin-bottom: 90px;
 }
 
 .grid-item {

@@ -37,7 +37,7 @@ function FooterHome() {
             <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>
                 <MDBIcon icon="gem" className="me-3" />
-                MotoPedia
+                ¿Que somos?
               </h6>
               <p>
                 Información de motocicletas creado por entusiastas de las motos para entusiastas de las motos.
@@ -113,7 +113,7 @@ function FooterHome() {
         </MDBContainer>
       </section>
 
-      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+      <div className='text-center p-4' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)', color:"white" }}>
         © 2023 Copyright:
         <a className='text-reset fw-bold' href='https://mdbootstrap.com/'>
         https://github.com/Isomorphism21

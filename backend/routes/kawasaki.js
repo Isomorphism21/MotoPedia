@@ -50,7 +50,18 @@ router.get("/get", async (req, res) => {
 
 router.post("/post", async (req, res) => {
     try {
-
+        const {modelo, tipo, cuerpodeaceleracion, abs, cilindraje, descripcion, marca, imagen} = req.body;
+        const tipoNuevoId = new ObjectId(tipo);
+        const datosIngresar = {
+            modelo,
+            tipo: tipoNuevoId,
+            cuerpodeaceleracion,
+            abs,
+            cilindraje,
+            descripcion,
+            marca,
+            imagen
+        }
         const client = new MongoClient(uri);
         await client.connect();
         const db = client.db(nombreBase);

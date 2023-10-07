@@ -4,10 +4,10 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useHistory, useParams } from "react-router-dom";
 import { FaMotorcycle } from "react-icons/fa";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Read(APIURL) {
-
+    const [isLoading, setIsLoading] = useState(true);
     const { url } = useParams();
     let nombre;
 
@@ -32,6 +32,7 @@ export default function Read(APIURL) {
             .then((response) => {
                 console.log(response.data);
                 setAPIData(response.data);
+                setIsLoading(false);
             });
 
     }, [APIURL]);
@@ -89,7 +90,15 @@ export default function Read(APIURL) {
 
     return (
         <>
-            <div style={{display:"flex", alignItems:"center", justifyContent:"center", marginBottom:"10px"}}>
+            {isLoading ? (
+                <div style={{display: "flex", justifyContent:"center"}}>
+                    <Spinner className="spinner-border-lg" animation="border" role="status" variant="warning">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                </div>
+            ) : (
+                <>
+                    <div style={{display:"flex", alignItems:"center", justifyContent:"center", marginBottom:"10px"}}>
                 <Button className="btn-warning" onClick={() => {history.push(`/create/${APIData[0].marca}`); window.location.reload()}}>
                     <FaMotorcycle size={50}/>
                 </Button>
@@ -132,7 +141,6 @@ export default function Read(APIURL) {
                                             </Button>
                                         </div>
                                     </div>
-                                    
                                 </div>
                             </div>
                         )
@@ -159,6 +167,8 @@ export default function Read(APIURL) {
                     </Modal>
                 </div>
             </div>
+                </>
+            )}
         </>
     )
 }
